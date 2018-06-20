@@ -1,2 +1,2 @@
 # WeatherReport
-practicing my first weather report
+Practicing my first weather report

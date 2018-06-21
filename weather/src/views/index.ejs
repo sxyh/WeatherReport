@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="/javascripts/jquery.min.js"></script>
+    <script type="text/javascript">
+
+    	$(function() {
+
+    		$('#btn').click(function(){
+    			var city = $('#city').val();
+    			var url = './weather?city=' + encodeURI(city);
+
+    			$.ajax({
+    				type: 'get',
+    				url: url,
+    				dateType: 'json',
+    				success: function(res, status, xhr) {
+    					var ress = eval("("+res+")");
+    					if(ress.status == 200) {
+    						render(ress.data.forecast);
+    					}else{
+    						alert('error');
+    					}
+    				},
+    				error: function() {
+    					alert('error');
+    				}
+    			});
+    		});
+
+    		function render(data) {
+    			console.log('into render');
+
+    			var loc = $('#weather');
+    			loc.html('');
+
+    			for(var item in data) {
+    				$('<div/>').attr('id', 'w'+item).appendTo(loc);
+    			}
+
+    			for(var i = 0; i < data.length; i++) {
+    				var iw = data[i];
+    				console.log(iw);
+    				var dloc = $('#w' + i );
+
+    				for(var w in iw) {
+    					console.log(w);
+    					$('<p/>').html(w + ':' + iw[w]).appendTo(dloc);
+    				}
+    			}
+    		}
+    	})
+    </script>
+  </head>
+  <body>
+  	<div id="search">
+  		<input type="text" name="city" id="city" placeholder="请输入城市名">
+  		<input type="button" id="btn" value="查询">
+  	</div>
+  	<div id="weather"></div>
+  	<p>powered by shangxingyu</p>
+  </body>
+</html>

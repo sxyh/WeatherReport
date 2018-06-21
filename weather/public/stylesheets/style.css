@@ -1,8 +1,38 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	padding: 50px;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	width: 60%;
+	margin: 0 auto;
+	background-color: #00DDDD;
 }
 
-a {
-  color: #00B7FF;
+#btn {
+	width: 60px;
+	height: 30px;
+}
+
+#city {
+	margin-left: 260px;
+	width: 200px;
+	height: 30px;
+}
+
+#weather3{
+	border:5px solid #66FF66;
+}
+
+div {
+	border: 2px solid #66ff66;
+}
+
+div p {
+	display: inline-block;
+	font-family: "黑体";
+	margin: 5px;
+}
+
+div+p {
+	margin-bottom: 10pxx;
+	color: #ff0088;
+
 }
